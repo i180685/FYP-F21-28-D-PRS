@@ -1,5 +1,8 @@
 Project Overview:
+
+
 Problem Statement: 
+
 Parking is one of the key components of transportation programs all over the world. With the increase of vehicle ownership in recent times, parking has become a conflicting and confusing situation for a lot of people. An average automobile is in motion for a small percentage of time. During the remaining time, it is either parked in a street, in a parking lot or in a house. Urban cities like Islamabad are facing a lot of parking issues and their local development authorities are planning to build parking plazas for public ease.
 Though parking in a parking lot may sound easy, it has its own couple of issues such as finding an empty parking space, booking a parking spot beforehand etc. This can cause discomfort for the driver and they might want to just skip this whole ordeal. Thus, work needs to be done to make this process a whole lot easier for the public. 
 Problem Solution:
