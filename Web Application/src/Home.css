@@ -1,0 +1,306 @@
+html,body {
+    background-color: #E5F6DF;
+}
+.home{
+    height: 100%;
+    width: 100%;
+}
+
+.userProfile{
+    overflow-y: scroll;
+    position: relative;
+}
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+}
+.sidebarHeader{
+    height: 25%;
+}
+.side{
+    height:100%;
+    width: 100%;
+    padding-left: 19%;
+    margin: 0;  
+}
+.side-user{
+    height:100%;
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    position: fixed;
+    margin: 0;  
+}
+ 
+.img-css {
+    width: 50%;
+    height: 50%;
+    position:relative;
+    margin-left: 40%;
+    padding-right: 30%;
+    margin-top: 10%;
+}
+.sidebar-img-css {
+    width: 80%;
+    height: 80%;
+    position:relative;
+    margin-left: 20%;
+    padding-right: 20%;
+    margin-top: 10%;
+}
+
+.text-css{
+    text-align: center;
+    font-size: 24px;
+    margin-top: 80px;
+    color: #fff;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1rem;
+    color:  green;
+  }
+  
+  .headings {
+      padding-left: 6%;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #4FC3A1;
+      margin-top: 5%;
+  }
+
+  .descriptionLeft{
+    font-weight: bold;
+    color: #4FC3A1;
+  }
+h3 {
+    color: #4FC3A1;
+}  
+.form-btn {
+    width: 80%;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: linear-gradient(
+      90deg,
+      rgb(39, 176, 255) 0%,
+      rgb(0, 232, 236) 100%
+    );
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+}
+  
+.form-btn:hover {
+    cursor: pointer;
+    background: linear-gradient(
+        90deg,
+        rgb(39, 143, 255) 0%,
+        rgb(12, 99, 250) 100%
+    );
+    transition: all 0.4s ease-out;
+}
+  
+.form-input-home {
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+.form-input-home a {
+    text-decoration: none;
+    color: #27cdff;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+
+ 
+
+
+
+
+  table {
+    counter-reset: tableCount;     
+}
+.counterCell:before {              
+    content: counter(tableCount); 
+    counter-increment: tableCount; 
+}
+h2{
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    padding: 30px 0;
+}
+
+/* Table Styles */
+
+.table-wrapper{
+    position: flex;
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+    table-layout: fixed;
+}
+
+
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+    width: 190px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+    
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: #4FC3A1;
+}
+
+tbody {
+    column-width: 20%;
+}
+
+.fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .fl-table {
+        display: block;
+        width: 100%;
+    }
+    .table-wrapper:before{
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    }
+    .fl-table thead, .fl-table tbody, .fl-table thead th {
+        display: block;
+    }
+    .fl-table thead th:last-child{
+        border-bottom: none;
+    }
+    .fl-table thead {
+        float: left;
+    }
+    .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    .fl-table td, .fl-table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+    .fl-table tbody tr {
+        display: table-cell;
+    }
+    .fl-table tbody tr:nth-child(odd) {
+        background: none;
+    }
+    .fl-table tr:nth-child(even) {
+        background: transparent;
+    }
+    .fl-table tr td:nth-child(odd) {
+        background: #F8F8F8;
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tr td:nth-child(even) {
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tbody td {
+        display: block;
+        text-align: center;
+    }
+}
+
+.deleteButton  , .editButton{
+   
+    background: #FF4742;
+    border: 1px solid #FF4742;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 2px;
+    min-height: 20px;
+    outline: 0;
+    padding: 12px 14px 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    margin: 2px 2px;
+}
+
+.editButton{
+    background: #4FC3A1;
+    border: 1px solid #4FC3A1;
+}
+    
+.deleteButton:hover, .deleteButton:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #FF4742;
+}
+
+.editButton:hover {
+    background-color: initial;
+    background-position: 0 0;
+    color: #4FC3A1
+}
+    
+.deleteButton:active , .editButton:active{
+    opacity: .5;
+}
