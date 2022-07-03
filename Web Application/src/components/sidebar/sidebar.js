@@ -67,12 +67,10 @@ function Sidebar({ color , image , routes }) {
     </div>
   );
 }
-
-
 */
 
 import React from "react";
-import { useLocation, NavLink } from "react-router-dom";
+import { useLocation, NavLink, Link } from "react-router-dom";
 
 import { Nav } from "react-bootstrap";
 
@@ -117,7 +115,9 @@ function Sidebar({ color , image , routes }) {
               );
             return null;
           })}
+          
         </Nav>
+        
       </div>
     </div>
   );

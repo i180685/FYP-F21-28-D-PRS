@@ -15,7 +15,7 @@ import {
 } from "react-bootstrap";
 
 
-const User = ({name,email,rollNo,password,mobileNo,carName,carComp,carNoplate,spot,id}) => {
+const User = ({name,email,rollNo,password,mobileNo,carName,carComp,carNoplate,spot,status}) => {
 
   const toggleComplete = async (user) => {
     await updateDoc(doc(db, "users", user.id), { 
@@ -31,10 +31,8 @@ const User = ({name,email,rollNo,password,mobileNo,carName,carComp,carNoplate,sp
   };
 
   return (
-    <>
-      <Container fluid>
-
-        <br />
+    <div className="m-5">
+      <Container style={{height:850}}>
 
         <Row className="p-0">
 
@@ -42,13 +40,11 @@ const User = ({name,email,rollNo,password,mobileNo,carName,carComp,carNoplate,sp
 
             <Card>
               <Card.Header>
-                <Card.Title as="h4">Edit Profile</Card.Title>
+                <Card.Title as="h4">User Profile</Card.Title>
               </Card.Header>
               <Card.Body>
                 <Form>
           
-
-
                   <Row className="p-0">
                     <Col md="12">
                       <Form.Group>
@@ -162,6 +158,8 @@ const User = ({name,email,rollNo,password,mobileNo,carName,carComp,carNoplate,sp
 
 
 
+
+
                   <Button
                     className="btn-fill pull-right"
                     type="submit"
@@ -203,6 +201,9 @@ const User = ({name,email,rollNo,password,mobileNo,carName,carComp,carNoplate,sp
                   </a>
                   <p className="description">{rollNo}</p>
                   <p className="description">{email}</p>
+                  { status === 1 ? <p className="description">Vehicle Parked</p> : null }
+                  { status === 0 ? <p className="description">No spot Booked</p> : null }
+                  { status === 2 ? <p className="description">On its way</p> : null }
                 </div>
                 <p className="description text-center">
                   {}
@@ -240,7 +241,7 @@ const User = ({name,email,rollNo,password,mobileNo,carName,carComp,carNoplate,sp
         </Row>
         
       </Container>
-    </>
+      </div>
   );
 }
 

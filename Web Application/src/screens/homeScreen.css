@@ -50,3 +50,28 @@ h3 {
 .left {
     text-align: left;
 }
+
+.videoLeft{
+    width: 40%;
+    height: 40%;
+    margin: 5%;
+    margin-left: 1%;
+    border-radius: 50px;
+    position: absolute;
+}
+.videoContent{
+    width: 40%;
+    height: 10%;
+    margin-top: 29%;
+    margin-left: 5%;
+    text-align: center;
+    position: absolute;
+}
+
+.videoRight{
+    width: 40%;
+    height: 40%;
+    margin: 5%;
+    margin-left: 50%;
+    position: absolute;
+}

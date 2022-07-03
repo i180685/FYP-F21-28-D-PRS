@@ -35,6 +35,33 @@ function ChartsPage() {
       return () => ss();
   } ,[]); 
 
+  const [users , setUsers] = useState([])
+  const [spots , setSpots] = useState([])
+    
+  useEffect(() => {
+      const q = query(collection(db , "users"));
+      const ss = onSnapshot(q ,  querySnapshot => {
+          let arr = []
+          querySnapshot.forEach(doc => {
+              arr.push( {...doc.data(), id:doc.id });
+          });
+          setUsers(arr);
+      });
+    return () => ss();
+  } ,[]);
+
+  useEffect(() => {
+      const q = query(collection(db , "spots"));
+      const ss = onSnapshot(q ,  querySnapshot => {
+          let arr = []
+          querySnapshot.forEach(doc => {
+              arr.push( {...doc.data(), id:doc.id });
+          });
+          setSpots(arr);
+      });
+    return () => ss();
+    } ,[]);
+
     var totalBooking;
     var todayBooking;
     var avaliableSpots;
@@ -47,8 +74,44 @@ function ChartsPage() {
       bookedSpots = dt.bookedSpots 
      )) 
 
+     let userBookedcount = 0
+     let userOnitswaycount = 0
+     let usertotalBookingscount = 0
+     let totaluserscount = 0
+     users.map((user) => (
+       user.status === 1
+       ?  userBookedcount = userBookedcount + 1
+       :  user.status === 2
+          ?  userOnitswaycount = userOnitswaycount + 1
+          :  null 
+     ))
+     users.map((user) => (
+      totaluserscount = totaluserscount + 1
+    ))
+
+    let totalusersunbooked = totaluserscount - userBookedcount - userOnitswaycount
+    usertotalBookingscount = userBookedcount + userOnitswaycount
+
+    let adminBookedcount = 0
+    let adminReservedcount = 0
+    let totaladmincount = 0
+    spots.map((spot) => (
+      spot.reserved === "1"
+      ?   adminReservedcount = adminReservedcount +1
+      :   spot.booked === "1"
+          ?   adminBookedcount = adminBookedcount +1
+          :   null
+    )) 
+    totaladmincount = adminBookedcount + adminReservedcount
+
+    let totalunavailablespots = totaladmincount + usertotalBookingscount
+    let spotsavailablecount = 20 - totalunavailablespots
+
     return (
       <>
+      <div className="headings-spot">
+        REPORTS
+      </div>
       <Container fluid>
 
 
@@ -67,20 +130,13 @@ function ChartsPage() {
                   </Col>
                   <Col xs="9">
                     <div className="numbers">
-                      <p className="card-category">Total Bookings</p>
-                      <p className="card-category">All time</p>
-                      <Card.Title as="h4">{totalBooking}</Card.Title>
+                      <p className="card-category">Total Parking</p>
+                      <p className="card-category">Spots</p>
+                      <Card.Title as="h4">20</Card.Title>
                     </div>
                   </Col>
                 </Row>
               </Card.Body>
-              <Card.Footer>
-                <hr></hr>
-                <div className="stats ptr">
-                  <i className="fas fa-redo mr-1"></i>
-                  Update Now
-                </div>
-              </Card.Footer>
             </Card>
 
 
@@ -93,56 +149,42 @@ function ChartsPage() {
                 <Row className="p-0"> 
                   <Col xs="3">
                     <div className="icon-big text-center icon-warning">
-                    <i className="fas fa-parking text-warning"></i>
-                    </div>
-                  </Col>
-                  <Col xs="9">
-                    <div className="numbers">
-                      <p className="card-category">Total Bookings</p>
-                      <p className="card-category">Today</p>
-                      <Card.Title as="h4">{todayBooking}</Card.Title>
-                    </div>
-                  </Col>
-                </Row>
-              </Card.Body>
-              <Card.Footer>
-                <hr></hr>
-                <div className="stats ptr">
-                  <i className="fas fa-redo mr-1"></i>
-                  Update Now
-                </div>
-              </Card.Footer>
-            </Card>
-
-
-          </Col>
-          <Col lg="3" sm="6">
-
-
-          <Card className="card-stats">
-              <Card.Body>
-                <Row className="p-0"> 
-                  <Col xs="3">
-                    <div className="icon-big text-center icon-warning">
-                    <i className="fas fa-car text-success"></i>
+                    <i className="fas fa-parking text-success"></i>
                     </div>
                   </Col>
                   <Col xs="9">
                     <div className="numbers">
                       <p className="card-category">Parking Spots</p>
-                      <p className="card-category">Avaliable</p>
-                      <Card.Title as="h4">{avaliableSpots}</Card.Title>
+                      <p className="card-category">Available</p>
+                      <Card.Title as="h4">{spotsavailablecount}</Card.Title>
                     </div>
                   </Col>
                 </Row>
               </Card.Body>
-              <Card.Footer>
-                <hr></hr>
-                <div className="stats ptr">
-                  <i className="fas fa-redo mr-1"></i>
-                  Update Now
-                </div>
-              </Card.Footer>
+            </Card>
+
+
+          </Col>
+          <Col lg="3" sm="6">
+
+
+          <Card className="card-stats">
+              <Card.Body>
+                <Row className="p-0"> 
+                  <Col xs="3">
+                    <div className="icon-big text-center icon-warning">
+                    <i className="fas fa-parking text-danger"></i>
+                    </div>
+                  </Col>
+                  <Col xs="9">
+                    <div className="numbers">
+                      <p className="card-category">Parking Spots</p>
+                      <p className="card-category">Booked</p>
+                      <Card.Title as="h4">{totalunavailablespots}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
             </Card>
 
 
@@ -157,36 +199,220 @@ function ChartsPage() {
                 <Row className="p-0"> 
                   <Col xs="3">
                     <div className="icon-big text-center icon-warning">
-                    <i className="fas fa-car text-danger"></i>
+                    <i className="fas fa-user text-primary"></i>
                     </div>
                   </Col>
                   <Col xs="9">
                     <div className="numbers">
-                      <p className="card-category">Parking Spots</p>
-                      <p className="card-category">Booked</p>
-                      <Card.Title as="h4">{bookedSpots}</Card.Title>
+                      <p className="card-category">Total User </p>
+                      <p className="card-category">Registered</p>
+                      <Card.Title as="h4">{totaluserscount}</Card.Title>
                     </div>
                   </Col>
                 </Row>
               </Card.Body>
-              <Card.Footer>
-                <hr></hr>
-                <div className="stats ptr ">
-                  <i className="fas fa-redo mr-1"></i>
-                  Update Now
-                </div>
-              </Card.Footer>
             </Card>
 
 
           </Col>
         </Row>
 
-<br /><br /><br /><br />
+        <Row className="p-0" style={{marginTop:40}}>
+          <Col lg="3" sm="6">
+            <Card className="card-stats">
+              <Card.Body>
+                <Row className="p-0"> 
+                  <Col xs="3">
+                    <div className="icon-big text-center icon-warning">
+                    <i className="fas fa-car text-primary"></i>
+                    </div>
+                  </Col>
+                  <Col xs="9">
+                    <div className="numbers">
+                      <p className="card-category">Total Users Spots</p>
+                      <p className="card-category">Booked</p>
+                      <Card.Title as="h4">{usertotalBookingscount}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+
+
+          </Col>
+          <Col lg="3" sm="6">
+
+
+          <Card className="card-stats">
+              <Card.Body>
+                <Row className="p-0"> 
+                  <Col xs="3">
+                    <div className="icon-big text-center icon-warning">
+                    <i className="fas fa-car text-warning"></i>
+                    </div>
+                  </Col>
+                  <Col xs="9">
+                    <div className="numbers">
+                      <p className="card-category">User Bookings</p>
+                      <p className="card-category">On its way</p>
+                      <Card.Title as="h4">{userOnitswaycount}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+
+
+          </Col>
+          <Col lg="3" sm="6">
+
+
+          <Card className="card-stats">
+              <Card.Body>
+                <Row className="p-0"> 
+                  <Col xs="3">
+                    <div className="icon-big text-center icon-warning">
+                    <i className="fas fa-car text-danger"></i>
+                    </div>
+                  </Col>
+                  <Col xs="9">
+                    <div className="numbers">
+                      <p className="card-category">User Bookings</p>
+                      <p className="card-category">Vehicle Parked</p>
+                      <Card.Title as="h4">{userBookedcount}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+
+
+
+          </Col>
+          <Col lg="3" sm="6">
+            <Card className="card-stats">
+              <Card.Body>
+                <Row className="p-0"> 
+                  <Col xs="3">
+                    <div className="icon-big text-center icon-warning">
+                    <i className="fas fa-user text-danger"></i>
+                    </div>
+                  </Col>
+                  <Col xs="9">
+                    <div className="numbers">
+                      <p className="card-category">Total Users</p>
+                      <p className="card-category">Booked or on their way</p>
+                      <Card.Title as="h4">{usertotalBookingscount}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+
+        <Row className="p-0" style={{marginTop:40}}>
+          <Col lg="3" sm="6">
+            <Card className="card-stats">
+              <Card.Body>
+                <Row className="p-0"> 
+                  <Col xs="3">
+                    <div className="icon-big text-center icon-warning">
+                    <i className="fas fa-lock text-primary"></i>
+                    </div>
+                  </Col>
+                  <Col xs="9">
+                    <div className="numbers">
+                      <p className="card-category">Total Admin Spots</p>
+                      <p className="card-category">Booked</p>
+                      <Card.Title as="h4">{totaladmincount}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+
+
+          </Col>
+          <Col lg="3" sm="6">
+          <Card className="card-stats">
+              <Card.Body>
+                <Row className="p-0"> 
+                  <Col xs="3">
+                    <div className="icon-big text-center icon-warning">
+                    <i className="fas fa-lock text-danger"></i>
+                    </div>
+                  </Col>
+                  <Col xs="9">
+                    <div className="numbers">
+                      <p className="card-category">Admin Bookings</p>
+                      <p className="card-category">Spot Booked</p>
+                      <Card.Title as="h4">{adminBookedcount}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+
+
+          </Col>
+          <Col lg="3" sm="6">
+
+
+          <Card className="card-stats">
+              <Card.Body>
+                <Row className="p-0"> 
+                  <Col xs="3">
+                    <div className="icon-big text-center icon-warning">
+                    <i className="fas fa-lock text-warning"></i>
+                    </div>
+                  </Col>
+                  <Col xs="9">
+                    <div className="numbers">
+                      <p className="card-category">Admin Bookings</p>
+                      <p className="card-category">Reserved Spots</p>
+                      <Card.Title as="h4">{adminReservedcount}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+
+
+
+          </Col>
+          <Col lg="3" sm="6">
+
+
+            
+          <Card className="card-stats">
+              <Card.Body>
+                <Row className="p-0"> 
+                  <Col xs="3">
+                    <div className="icon-big text-center icon-warning">
+                    <i className="fas fa-user text-success"></i>
+                    </div>
+                  </Col>
+                  <Col xs="9">
+                    <div className="numbers">
+                      <p className="card-category">Total Users</p>
+                      <p className="card-category">Spot not booked</p>
+                      <Card.Title as="h4">{totalusersunbooked}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+
+
+          </Col>
+        </Row>
+
+<br /><br />
 
         <Row className="p-0" >
 
-          <Col md="8">
+          {/* <Col md="8">
 
             <Card>
               <Card.Header>
@@ -258,12 +484,11 @@ function ChartsPage() {
             </Card>
 
 
-          </Col>
+          </Col> */}
           <Col md="4">
             <Card>
               <Card.Header>
-                <Card.Title as="h4">Booking Batch-wise</Card.Title>
-                <p className="card-category">Fall 2021</p>
+                <Card.Title as="h4">Total Bookings</Card.Title>
               </Card.Header>
               <Card.Body>
                 <div
@@ -272,36 +497,81 @@ function ChartsPage() {
                 >
                   <ChartistGraph
                     data={{
-                      labels: ["30%", "20%", "40%" , "10%"],
-                      series: [30, 20, 40 , 10] ,
+                      labels: [" " , " ", " " , " " ],
+                      series: [ 0, totalunavailablespots,0 , spotsavailablecount] ,
                     }}
                     type="Pie"
 
                   />
                 </div>
-
-                  <div className="legend" height="100px">
-                    <Row className="p-0 h-25" sm="4 ">
-                      <Col><i className="fas fa-circle text-info"></i>18th  </Col>
-                      <Col><i className="fas fa-circle text-danger"></i>19th  </Col>
-                      <Col><i className="fas fa-circle text-warning"></i>20th  </Col>
-                      <Col><i className="fas fa-circle text-success"></i>21st</Col>
+                <div style={{marginTop:-50,height:50}} >
+                    <Row className="p-0 h-5 w-300" sm="2" style={{borderColor:'blue',border:1}}>
+                      <Col><i className="fas fa-circle" style={{color:'lightgreen'}}></i>Reserved: {spotsavailablecount}  </Col>
+                      <Col style={{paddingLeft:60}}><i className="fas fa-circle text-danger"></i>Booked: {totalunavailablespots}  </Col>
                     </Row>
                   </div>
               </Card.Body>
-              <Card.Footer>
-                <hr></hr>
-                <div className="stats">
-                  <i className="fas fa-history"></i>
-                  Updated 5 minutes ago
+            </Card>
+          </Col>
+          <Col md="4">
+            <Card>
+              <Card.Header>
+                <Card.Title as="h4">User Bookings</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <div
+                  className="ct-chart ct-perfect-fourth"
+                  id="chartPreferences"
+                >
+                  <ChartistGraph
+                    data={{
+                      labels: [" ", " ", " " , " "],
+                      series: [0, userBookedcount, userOnitswaycount , 0] ,
+                    }}
+                    type="Pie"
+                  />
                 </div>
-              </Card.Footer>
+                <div style={{marginTop:-50,height:50}} >
+                    <Row className="p-0 h-5 w-300" sm="2" style={{borderColor:'blue',border:1}}>
+                      <Col><i className="fas fa-circle" style={{color:'orange'}}></i>On it's way: {userOnitswaycount}  </Col>
+                      <Col style={{paddingLeft:60}}><i className="fas fa-circle text-danger"></i>Booked: {userBookedcount}  </Col>
+                    </Row>
+                  </div>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md="4">
+            <Card>
+              <Card.Header>
+                <Card.Title as="h4">Admin Bookings</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <div
+                  className="ct-chart ct-perfect-fourth"
+                  id="chartPreferences"
+                >
+                  <ChartistGraph
+                    data={{
+                      labels: [" ", " ", " " , " "," "," "," "],
+                      series: [adminBookedcount, 0, 0 , 0 , 0 , 0 ,adminReservedcount] ,
+                    }}
+                    type="Pie"
+
+                  />
+                </div>
+                  <div style={{marginTop:-50,height:50}} >
+                    <Row className="p-0 h-5 w-300" sm="2" style={{borderColor:'blue',border:1}}>
+                      <Col><i className="fas fa-circle" style={{color:'gray'}}></i>Reserved: {adminReservedcount}  </Col>
+                      <Col style={{paddingLeft:60}}><i className="fas fa-circle"style={{color:'skyblue'}}></i>Booked: {adminBookedcount}  </Col>
+                    </Row>
+                  </div>
+              </Card.Body>
             </Card>
           </Col>
         </Row>
 
 
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
         <Row className="p-0" >
           <Col >
@@ -315,11 +585,11 @@ function ChartsPage() {
                   <ChartistGraph
                     data={{
                       labels: [
-                        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
+                        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
                       ],
                       series: [
                         [
-                          7,9,11,15,16,19,21,25,26,29,27,25,26,21,11,5,
+                          7,9,11,15,16,19,21,25,26,29,27,25,26,21,11,5,9,7,17,21,
                         ],
                       ],
                     }}
@@ -340,7 +610,7 @@ function ChartsPage() {
                       axisY: {
                         position: 'start'
                       },
-                      height: "500px",
+                      height: "580px",
                     }}
                     responsiveOptions={[
                       [
@@ -358,16 +628,6 @@ function ChartsPage() {
                   />
                 </div>
               </Card.Body>
-              <Card.Footer>
-              <div className="legend">
-                  <i className="fas fa-circle text-info"></i> Total booking per spot
-                </div>
-                <hr></hr>
-                <div className="stats">
-                  <i className="fas fa-history"></i>
-                  Updated 7 minutes ago
-                </div>
-              </Card.Footer>
             </Card>
           </Col>
           

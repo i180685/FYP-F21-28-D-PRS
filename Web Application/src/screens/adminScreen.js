@@ -3,7 +3,6 @@ import { useLocation, Route, Switch } from "react-router-dom";
 
 import Sidebar from '../components/sidebar/sidebar';
 import routes from "../routes";
-import Navbar from "../components/navbar/navbar"
 import AdminProfiles from "../components/admininfo/adminProfile";
 
 import sdBarImg from "../assets/pics/green.jpg"
@@ -53,7 +52,7 @@ function Admin() {
         <Sidebar color={color} image={sdBarImg} routes={routes} />
 
         <div className="main-panel" ref={mainPanel}>
-          <Navbar />
+          {/* <Navbar /> */}
           <div className="content" >
             {getRoutes(routes)}
             <Switch>

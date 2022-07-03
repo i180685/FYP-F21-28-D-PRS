@@ -6,6 +6,60 @@
     position: absolute;
     background-color: #D3D3D3;
 }
+.legend{
+    position: absolute;
+    margin-left: 40%;
+    margin-top: 10%;
+}
+
+.red-legend {
+    display:inline-block;
+    background-color: #FF7F7F;
+    transition: transform .2s; /* Animation */
+    width: 15px;
+    height: 15px;
+    border-radius: 5px;
+}
+.green-legend {
+    display:inline-block;
+    background-color: lightgreen;
+    transition: transform .2s; /* Animation */
+    width: 15px;
+    height: 15px;
+    border-radius: 5px;
+}
+.orange-legend {
+    display:inline-block;
+    background-color: orange;
+    transition: transform .2s; /* Animation */
+    width: 15px;
+    height: 15px;
+    border-radius: 5px;
+}
+.black-legend {
+    display:inline-block;
+    background-color: #324960;
+    transition: transform .2s; /* Animation */
+    width: 15px;
+    height: 15px;
+    border-radius: 5px;
+}
+.blue-legend {
+    display:inline-block;
+    background-color: lightblue;
+    transition: transform .2s; /* Animation */
+    width: 15px;
+    height: 15px;
+    border-radius: 5px;
+}
+.purple-legend {
+    display:inline-block;
+    background-color: purple;
+    transition: transform .2s; /* Animation */
+    width: 15px;
+    height: 15px;
+    border-radius: 5px;
+}
 
 a{
     text-decoration: none;
@@ -19,7 +73,7 @@ a{
 }
 
 .f2-table {
-    border-radius: 51px;
+    border-radius: 20px;
     font-size: 12px;
     font-weight: normal;
     border-collapse: collapse;
@@ -83,7 +137,6 @@ tbody {
     background-color: white;
     border-top-left-radius: 10px;
     border-top-right-radius:10px;
-    display: inline-block;
     bottom: 0;
     position: inherit;
 }
@@ -118,6 +171,17 @@ tbody {
     border-radius: 5px;
 }
 
+.columnErrorSpot{
+    background-color: #ba55d3;
+    transition: transform .2s; /* Animation */
+    width: 110px;
+    height: 50px;
+    color: aliceblue;
+    font-size: 30px;
+    text-align: center; 
+    border-radius: 5px;
+}
+
 .columnBookedSpot {
     background-color: #FF7F7F;
     transition: transform .2s; /* Animation */
@@ -140,16 +204,47 @@ tbody {
     border-radius: 5px;
 }
 
+.columnBookedAdmin {
+    background-color: skyblue;
+    transition: transform .2s; /* Animation */
+    width: 110px;
+    height: 50px;
+    color: aliceblue;
+    font-size: 30px;
+    text-align: center; 
+    border-radius: 5px;
+}
+
+.columnReservedAdmin {
+    background-color: #324960;
+    transition: transform .2s; /* Animation */
+    width: 110px;
+    height: 50px;
+    color: aliceblue;
+    font-size: 30px;
+    text-align: center; 
+    border-radius: 5px;
+}
+
 .columnBookedSpot:hover {
     transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    z-index: 999;
   }  
   .columninParkingSpot:hover {
     transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    z-index: 999;
   }
   .columnUnbookedSpot:hover {
     transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
-
+  .columnErrorSpot:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+  .columnBookedAdmin:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }.columnReservedAdmin:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
 
 
   .button{

@@ -77,7 +77,7 @@ function UserProfiles() {
     return (
 
       <div>
-      <div className="headings">
+      <div className="headings-spot">
             USER'S PERSONAL DATA
         </div>
       <div class="table-wrapper">

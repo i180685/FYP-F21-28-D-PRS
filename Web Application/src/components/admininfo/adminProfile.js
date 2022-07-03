@@ -5,6 +5,7 @@ import 'react-pro-sidebar/dist/css/styles.css';
 import AddAdmin from "./addAdmin";
 import AdminTable from "./adminTable";
 import AdminData from "./adminData";
+import { Link } from "react-router-dom";
 
 function AdminProfiles() {
   
@@ -58,9 +59,13 @@ function AdminProfiles() {
     return (
 
       <div>
-      <div className="headings">
+      <div className="headings-spot">
             ADMINS
+            <Link to="/signin" style={{marginLeft:900}}> 
+                  < i class="fas fa-sign-out-alt fa-2x" ></i>   
+                </Link>
         </div>
+        
       <div class="table-wrapper">
         <table class="fl-table">       
             <thead>

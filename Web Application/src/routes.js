@@ -8,6 +8,8 @@ import Dashboard from './screens/dashBoard';
 import Home from './screens/homeScreen';
 import UserData from './screens/userData'
 import Parkinglot from './components/parkinglot/parkinglot';
+import AdminProfiles from './components/admininfo/adminProfile';
+import Camera from './screens/cameraScreen';
 
 const DashboardRoutes = [
     {
@@ -33,9 +35,23 @@ const DashboardRoutes = [
     },
     {
         path: "/dashboard",
-        name: "dashboard",
+        name: "reports",
         icon: "fas fa-tachometer-alt",
         component: Dashboard,
+        layout: "/admin",
+    },
+    {
+        path: "/camera",
+        name: "video",
+        icon: "fas fa-video",
+        component: Camera,
+        layout: "/admin",
+    },
+    {
+        path: "/admins",
+        name: "admins",
+        icon: "fas fa-id-card",
+        component: AdminProfiles,
         layout: "/admin",
     }
 ]

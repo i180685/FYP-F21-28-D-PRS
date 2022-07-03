@@ -1,6 +1,7 @@
 import React from "react";
 import "./homeScreen.css"
 import 'react-pro-sidebar/dist/css/styles.css';
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
@@ -17,7 +18,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <br /><br /><br /> <hr />
+                <br /><br /><br /> <br /><br /><hr />
 
                 <div class="w3-row p-10" id="about">
                     <div class="w3-col m6  w3-hide-small">
