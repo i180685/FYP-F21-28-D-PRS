@@ -23,16 +23,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mPreferences=getSharedPreferences("Login",MODE_PRIVATE);
         editor=mPreferences.edit();
-        editor.putString("email","i160123@nu.edu.pk");
-        editor.putString("password","saad123");
+//        editor.putString("email","i160123@nu.edu.pk");
+//        editor.putString("password","saad123");
+        editor.putString("email","i120784@nu.edu.pk");
+        editor.putString("password","marukh123"); //wrong password just for demo
+
         editor.commit();
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
 
             }
         }, SPLASH_TIME_OUT);

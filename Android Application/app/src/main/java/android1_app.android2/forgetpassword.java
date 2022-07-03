@@ -15,6 +15,7 @@ import android1_app.android2.LoginActivity;
 import android1_app.android2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class forgetpassword extends AppCompatActivity {
@@ -27,6 +28,7 @@ public class forgetpassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgetpassword);
+
 
         mAuth= FirebaseAuth.getInstance();
         email=findViewById(R.id.email);

@@ -7,9 +7,12 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.renderscript.Sampler;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.EditText;
@@ -26,6 +29,7 @@ import android1_app.android2.dashboard;
 import android1_app.android2.forgetpassword;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth ;
     EditText email,pass;
     Button signin;
+    ImageView show_password;
     TextView register,forgotpass;
     private String Value;
     SharedPreferences getPref;
@@ -51,9 +56,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         mAuth= FirebaseAuth.getInstance();
+
         email = findViewById(R.id.email);
         pass  = findViewById(R.id.pass);
+        show_password=findViewById(R.id.show_pass_btn);
         signin = findViewById(R.id.login);
         register = findViewById(R.id.register);
         forgotpass = findViewById(R.id.forget);
@@ -61,9 +69,10 @@ public class LoginActivity extends AppCompatActivity {
 
         getPref=this.getSharedPreferences("Login",MODE_PRIVATE);
         editor=getPref.edit();
+
         String prefemail = getPref.getString("email","null");
         String prefpassword = getPref.getString("password","null");
-        Log.d(TAG, "\n\nprefemail => "+prefemail);
+        Log.d(TAG, "\n\nprefemail => "+prefemail);  //for testing in log
         if (prefemail != null) {
             mAuth.signInWithEmailAndPassword(prefemail, prefpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -172,7 +181,25 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    //For Hiding and unhiding password
+    public void ShowHidePass(View view) {
+        if(view.getId()==R.id.show_pass_btn){
 
+            if(pass.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                ((ImageView)(view)).setImageResource(R.drawable.hidden);
+
+                //Show Password
+                pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+            else{
+                ((ImageView)(view)).setImageResource(R.drawable.eye);
+
+                //Hide Password
+                pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+            }
+        }
+    }
 
 
 }

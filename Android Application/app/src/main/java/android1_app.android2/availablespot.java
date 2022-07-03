@@ -16,10 +16,32 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.widget.DatePicker;
+
+import java.util.Calendar;
+import android.app.TimePickerDialog;
+import android.widget.TimePicker;
+
+import java.util.Locale;
+
+
+import android.annotation.TargetApi;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
+
+
+
+
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -41,6 +63,20 @@ public class availablespot extends AppCompatActivity {
     CardView spot1,spot2,spot3,spot4,spot5,spot6,spot7,spot8,spot9,spot10,spot11,spot12,spot13,spot14,spot15,spot16,spot17,spot18,spot19,spot20;
     TextView spotheading;
 
+    private DatePickerDialog datePickerDialog;
+    private Button dateButton;
+    Button timeButton1, timeButton2;
+    int hour1, minute1;
+    int hour2, minute2;
+
+    int cday,cmonth,cyear;
+    int sday,smonth,syear;
+
+    SimpleDateFormat sdf1, sdf2;
+    String currentDate;
+    String currentTime;
+
+
     Button back , book;
     Map<String,String> spots = new HashMap<>();
     FirebaseFirestore fStore ;
@@ -51,10 +87,43 @@ public class availablespot extends AppCompatActivity {
     SharedPreferences mPreferences;
     SharedPreferences.Editor editor;
 
+    @TargetApi(Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_availablespot);
+        initDatePicker();
+
+//
+//        Calendar cal = Calendar.getInstance();
+//        cyear = cal.get(Calendar.YEAR);
+//        cmonth = cal.get(Calendar.MONTH);
+//        cmonth = cmonth + 1;
+//        cday = cal.get(Calendar.DAY_OF_MONTH);
+
+//        if(sday==cday && smonth==cmonth && syear==cyear){
+//            Toast.makeText(availablespot.this, "Dates are Equal", Toast.LENGTH_LONG).show();
+//        }
+//        else
+//        {
+//            Toast.makeText(availablespot.this, "nahhhhhh", Toast.LENGTH_LONG).show();
+//        }
+
+        //current date and time
+//        sdf1 = new SimpleDateFormat("MM.dd.yyyy");
+//        currentDate= sdf1.format(new Date());
+//        System.out.println(sdf1+"/n");
+//
+//        sdf2 = new SimpleDateFormat("HH:mm");
+//        currentTime= sdf2.format(new Date());
+//        System.out.println(sdf1);
+
+        dateButton = findViewById(R.id.datePickerButton);
+        dateButton.setText(getTodaysDate());
+
+        timeButton1 = findViewById(R.id.timeButton1);
+        timeButton2 = findViewById(R.id.timeButton2);
+
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -130,7 +199,7 @@ public class availablespot extends AppCompatActivity {
         if( chosenSpot.getChosenspot() == "20") spot20.setBackgroundResource(R.color.orange);
 
         PRS user = (PRS) getApplicationContext();
-        if(user.getStatus() != 1) {
+        if(user.getStatus() != null && user.getStatus() != 1) {
             spot1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -698,12 +767,12 @@ public class availablespot extends AppCompatActivity {
         String prefemail = mPreferences.getString("email",null);
 
         PRS pr = (PRS) getApplicationContext();
-        if(pr.getStatus() == 1) Toast.makeText(availablespot.this, "Cannot Book another spot Vehicle parked already", Toast.LENGTH_LONG).show();
+        if(pr.getStatus() != null && pr.getStatus() == 1) Toast.makeText(availablespot.this, "Cannot Book another spot Vehicle parked already", Toast.LENGTH_LONG).show();
 
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(pr.getStatus() == 1) {
+                if(pr.getStatus() != null && pr.getStatus() == 1) {
                     Toast.makeText(availablespot.this, "Cannot Book another spot Vehicle parked already", Toast.LENGTH_LONG).show();
 
                     fStore.collection("users")
@@ -737,7 +806,7 @@ public class availablespot extends AppCompatActivity {
                                     }
                                 }
                             });
-                }else if (pr.getStatus() != 1){
+                }else if (pr.getStatus() != null && pr.getStatus() != 1){
                     fStore.collection("users").document(pr.getDocID()).update("spot",chosenSpot.getChosenspot());
                     fStore.collection("users").document(pr.getDocID()).update("status",0);
                     fStore.collection("users")
@@ -822,28 +891,51 @@ public class availablespot extends AppCompatActivity {
                             if (spots.get("19")=="1") spot19.setBackgroundResource(R.color.red);
                             if (spots.get("20")=="1") spot20.setBackgroundResource(R.color.red);
                             PRS  user = (PRS) getApplicationContext();
-                            if (user.getStatus() == 1) spotheading.setText("You cannot book another spot");
-                            else if (user.getStatus() == 2) spotheading.setText("You can change your booked spot");
-                            if (user.getSpotNo().equals("1")) spot1.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("2")) spot2.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("3")) spot3.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("4")) spot4.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("5")) spot5.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("6")) spot6.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("7")) spot7.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("8")) spot8.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("9")) spot9.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("10")) spot10.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("11")) spot11.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("12")) spot12.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("13")) spot13.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("14")) spot14.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("15")) spot15.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("16")) spot16.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("17")) spot17.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("18")) spot18.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("19")) spot19.setBackgroundResource(R.color.purple);
-                            if (user.getSpotNo().equals("20")) spot20.setBackgroundResource(R.color.purple);
+                            if (user.getStatus() != null && user.getStatus() == 1) spotheading.setText("You cannot book another spot");
+                            else if (user.getStatus() != null && user.getStatus() == 2) spotheading.setText("You can change your booked spot");
+                            //here onwards changing color to black from purple version final
+                            if(user.getSpotNo() != null) {
+                                if (user.getSpotNo().equals("1"))
+                                    spot1.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("2"))
+                                    spot2.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("3"))
+                                    spot3.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("4"))
+                                    spot4.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("5"))
+                                    spot5.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("6"))
+                                    spot6.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("7"))
+                                    spot7.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("8"))
+                                    spot8.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("9"))
+                                    spot9.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("10"))
+                                    spot10.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("11"))
+                                    spot11.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("12"))
+                                    spot12.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("13"))
+                                    spot13.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("14"))
+                                    spot14.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("15"))
+                                    spot15.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("16"))
+                                    spot16.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("17"))
+                                    spot17.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("18"))
+                                    spot18.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("19"))
+                                    spot19.setBackgroundResource(R.color.red);
+                                if (user.getSpotNo().equals("20"))
+                                    spot20.setBackgroundResource(R.color.red);
+                            }
                         }else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -851,4 +943,126 @@ public class availablespot extends AppCompatActivity {
                     }
                 });
     }
+
+
+
+    //Date and Time Picker implementation
+
+
+
+
+
+
+    private String getTodaysDate() {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        month = month + 1;
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        return makeDateString(day, month, year);
+    }
+
+    private void initDatePicker() {
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                String date = makeDateString(day, month, year);
+                dateButton.setText(date);
+            }
+        };
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        int style = AlertDialog.THEME_HOLO_LIGHT;
+
+        datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
+        sday=day;
+        smonth=month;
+        syear=year;
+        //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+
+    }
+
+    private String makeDateString(int day, int month, int year) {
+        return getMonthFormat(month) + " " + day + " " + year;
+    }
+
+    private String getMonthFormat(int month) {
+        if (month == 1)
+            return "JAN";
+        if (month == 2)
+            return "FEB";
+        if (month == 3)
+            return "MAR";
+        if (month == 4)
+            return "APR";
+        if (month == 5)
+            return "MAY";
+        if (month == 6)
+            return "JUN";
+        if (month == 7)
+            return "JUL";
+        if (month == 8)
+            return "AUG";
+        if (month == 9)
+            return "SEP";
+        if (month == 10)
+            return "OCT";
+        if (month == 11)
+            return "NOV";
+        if (month == 12)
+            return "DEC";
+
+        //default should never happen
+        return "JAN";
+    }
+
+    public void openDatePicker(View view) {
+        datePickerDialog.show();
+    }
+
+
+    //Timer functions below
+    public void popTimePicker1(View view) {
+        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                hour1 = selectedHour;
+                minute1 = selectedMinute;
+                timeButton1.setText(String.format(Locale.getDefault(), "%02d:%02d", hour1, minute1));
+            }
+        };
+
+
+        // int style = AlertDialog.THEME_HOLO_DARK;
+        TimePickerDialog timePickerDialog1 = new TimePickerDialog(this, /*style,*/ onTimeSetListener, hour1, minute1, true);
+        timePickerDialog1.setTitle("Select Time");
+        timePickerDialog1.show();
+    }
+
+
+
+    public void popTimePicker2 (View view){
+        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                hour2 = selectedHour;
+                minute2 = selectedMinute;
+                timeButton2.setText(String.format(Locale.getDefault(), "%02d:%02d", hour2, minute2));
+            }
+        };
+
+        TimePickerDialog timePickerDialog2 = new TimePickerDialog(this, /*style,*/ onTimeSetListener, hour2, minute2, true);
+        timePickerDialog2.setTitle("Select Time");
+        timePickerDialog2.show();
+    }
+
+
+
+
+
 }

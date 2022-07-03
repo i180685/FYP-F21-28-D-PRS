@@ -62,7 +62,8 @@
                         <EditText
                             android:id="@+id/username"
                             style="@style/modifiedEditText"
-                            android:hint="Name"
+                            android:hint="Name*"
+                            android:textSize="14dp"
                             android:inputType="textPersonName"
                             android:maxLines="1"
                             android:textStyle="bold" />
@@ -76,7 +77,8 @@
                         <EditText
                             android:id="@+id/email"
                             style="@style/modifiedEditText"
-                            android:hint="@string/login_email_hint"
+                            android:hint="Email*"
+                            android:textSize="14dp"
                             android:inputType="textEmailAddress"
                             android:maxLines="1"
                             android:textStyle="bold" />
@@ -90,25 +92,44 @@
                         <EditText
                             android:id="@+id/mobileno"
                             style="@style/modifiedEditText"
-                            android:hint="Mobile Number"
+                            android:hint="Mobile Number*"
+                            android:textSize="14dp"
                             android:inputType="phone"
                             android:maxLines="1"
                             android:textStyle="bold" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputPassword"
-                        style="@style/parent"
-                        android:layout_marginTop="@dimen/loginViewsMargin">
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
 
                         <EditText
                             android:id="@+id/pass"
                             style="@style/modifiedEditText"
-                            android:hint="@string/login_password_hint"
+                            android:layout_width="fill_parent"
+                            android:layout_height="40dp"
+                            android:hint="Password*"
                             android:inputType="textPassword"
-                            android:maxLines="1"
+                            android:text=""
+                            android:textSize="14dp"
                             android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/show_pass_btn"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="5dp"
+                            android:alpha=".5"
+                            android:onClick="ShowHidePass"
+                            android:padding="5dp"
+                            android:src="@drawable/eye" />
+                    </RelativeLayout>
+
+
 
                     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                         android:id="@+id/register"

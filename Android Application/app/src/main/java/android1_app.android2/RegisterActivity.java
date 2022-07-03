@@ -3,8 +3,11 @@ package android1_app.android2;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.EditText;
@@ -22,6 +25,7 @@ import android1_app.android2.PRS;
 import android1_app.android2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,9 +42,11 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseUser mUser;
     EditText username, email, mobileno, pass;
     Button register;
+    ImageView show_password;
     TextView login;
     DatabaseReference reff;
-    android1_app.android2.PRS prss;
+//    android1_app.android2.PRS prss;
+    PRS prss;
     long maxid = 0;
 
     @Override
@@ -52,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
 
+        show_password=findViewById(R.id.show_pass_btn);
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         mobileno = findViewById(R.id.mobileno);
@@ -142,6 +149,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
+
+
         //function to increase database userdata counter in storage tree
         reff.addValueEventListener(new ValueEventListener() {
             @Override
@@ -177,5 +186,25 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    //For Hiding and unhiding password
+    public void ShowHidePass(View view) {
+        if(view.getId()==R.id.show_pass_btn){
+
+            if(pass.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                ((ImageView)(view)).setImageResource(R.drawable.hidden);
+
+                //Show Password
+                pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+            else{
+                ((ImageView)(view)).setImageResource(R.drawable.eye);
+
+                //Hide Password
+                pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+            }
+        }
     }
 }

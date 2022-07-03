@@ -24,6 +24,7 @@ import androidx.cardview.widget.CardView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -37,6 +38,9 @@ public class dashboard extends AppCompatActivity {
 
     CardView available;
     CardView profile;
+    CardView payment;
+    CardView about;
+    CardView faq;
     private FirebaseAuth mAuth;
     FirebaseFirestore fStore ;
     Button unbook;
@@ -57,9 +61,14 @@ public class dashboard extends AppCompatActivity {
 
         available = findViewById(R.id.available);
         profile = findViewById(R.id.profile);
+        payment = findViewById(R.id.payment);
         unbook = findViewById(R.id.unbook);
         unbookbutton = findViewById(R.id.unbookbutton);
         currspot = findViewById(R.id.currspot);
+        about= findViewById(R.id.aboutus);
+        faq=findViewById(R.id.faq);
+
+
 
 
         mPreferences=this.getSharedPreferences("Login",MODE_PRIVATE);
@@ -97,16 +106,16 @@ public class dashboard extends AppCompatActivity {
                                 }
                             }
                             PRS user = (PRS) getApplicationContext();
-                            if (user.getSpotNo().equals("0")) unbookbutton.setVisibility(View.GONE);
+                            if (user.getSpotNo() != null && user.getSpotNo().equals("0")) unbookbutton.setVisibility(View.GONE);
                             currspot = findViewById(R.id.currspot);
-                            if(user.getSpotNo().equals("0")) currspot.setText("-");
+                            if(user.getSpotNo() != null && user.getSpotNo().equals("0")) currspot.setText("-");
                             else currspot.setText(user.getSpotNo());
                             curruser = findViewById(R.id.curruser);
                             curruser.setText(user.getUsername());
                             currstatus = findViewById(R.id.currstatus);
                             if(user.getStatus() == 1) currstatus.setText("Parked");
-                            else if (user.getStatus() == 0 && !user.getSpotNo().equals("0")) currstatus.setText(("On my Way"));
-                            else if (user.getStatus() == 0 && user.getSpotNo().equals("0")) currstatus.setText(("Book your Spot"));
+                            else if (user.getSpotNo() != null && user.getStatus() == 0 &&  !user.getSpotNo().equals("0")) currstatus.setText(("On my Way"));
+                            else if (user.getSpotNo() != null &&user.getStatus() == 0 && user.getSpotNo().equals("0")) currstatus.setText(("Book your Spot"));
                             else if (user.getStatus() == 2) currstatus.setText("In Parking Lot");
                         }else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
@@ -121,16 +130,40 @@ public class dashboard extends AppCompatActivity {
             }
         });
 
+        payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(dashboard.this, fineamount.class));
+            }
+        });
+
+
+
         currspot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(getIntent());
             }
         });
+
         available.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(dashboard.this, availablespot.class));
+            }
+        });
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(dashboard.this, aboutus.class));
+            }
+        });
+
+        faq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(dashboard.this, faq.class));
             }
         });
 

@@ -38,7 +38,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <!-- <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
@@ -56,14 +56,194 @@
                     <TextView
                         android:id="@+id/spotheading"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text="Available Parking Spots"
                         android:fontFamily="@font/calibri"
                         android:textColor="@color/whiteTextColor"
                         android:textSize="25dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold" />-->
+
+            <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingStart="40dp"
+                        android:paddingEnd="40dp"
+                        android:layout_marginTop="10dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="50dp"
+                            android:layout_height="20dp"
+                            app:cardBackgroundColor="@color/red"
+                            >
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="hello"
+                                >
+
+                            </TextView>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_marginTop="7dp"
+                            android:layout_width="50dp"
+                            android:layout_height="20dp"
+                            app:cardBackgroundColor="@color/red"
+                            >
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/register_bk_color"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/calibri"
+                    android:text="Parking Spots"
+                    android:textColor="@color/whiteTextColor"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            app:cardBackgroundColor="#1FBDAF">
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Available" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            app:cardBackgroundColor="@color/red">
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Booked" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            app:cardBackgroundColor="@color/orange">
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="On it's way" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/view2"
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            app:cardBackgroundColor="@color/black">
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Reserved" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            app:cardBackgroundColor="#A5E2FF">
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Booked by Admin" />
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
@@ -74,35 +254,38 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-50dp"
-                android:orientation="vertical"
                 android:layout_marginLeft="12dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="12dp"
+                android:background="@drawable/circularborder"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                android:background="@drawable/circularborder"
+                android:orientation="vertical"
+                android:weightSum="7"
                 app:cardCornerRadius="20dp"
-                app:cardUseCompatPadding="true"
-                android:weightSum="7">
+                app:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:weightSum="6"
                     android:paddingStart="40dp"
                     android:paddingEnd="40dp"
-                    android:layout_marginTop="5dp">
+                    android:weightSum="6">
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="90dp"
                         android:layout_height="50dp">
+
                         <LinearLayout
                             android:layout_width="90dp"
                             android:layout_height="50dp"
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:padding="1dp">
+
                             <androidx.cardview.widget.CardView
                                 android:id="@+id/spot10"
                                 android:layout_width="match_parent"
@@ -110,47 +293,52 @@
                                 android:layout_centerHorizontal="true"
                                 android:layout_gravity="center"
                                 app:cardBackgroundColor="#1FBDAF">
+
                                 <TextView
                                     android:id="@+id/sp10"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_gravity="center"
                                     android:text="10"
-                                    android:textColor="@color/whiteTextColor"
                                     android:textAlignment="center"
+                                    android:textColor="@color/whiteTextColor"
                                     android:textSize="20dp"
                                     android:textStyle="bold" />
                             </androidx.cardview.widget.CardView>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="90dp"
-                        android:layout_marginLeft="110dp"
-                        android:layout_height="50dp">
-                    <LinearLayout
-                        android:layout_width="90dp"
                         android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:padding="1dp" >
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/spot11"
-                            android:layout_width="match_parent"
+                        android:layout_marginLeft="110dp">
+
+                        <LinearLayout
+                            android:layout_width="90dp"
                             android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_gravity="center"
-                            app:cardBackgroundColor="#1FBDAF">
-                            <TextView
-                                android:id="@+id/sp11"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:padding="1dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/spot11"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_centerHorizontal="true"
                                 android:layout_gravity="center"
-                                android:text="11"
-                                android:textColor="@color/whiteTextColor"
-                                android:textAlignment="center"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-                        </androidx.cardview.widget.CardView>
-                    </LinearLayout>
+                                app:cardBackgroundColor="#1FBDAF">
+
+                                <TextView
+                                    android:id="@+id/sp11"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center"
+                                    android:text="11"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/whiteTextColor"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
 
@@ -158,49 +346,55 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="55dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:weightSum="6"
-                    android:layout_marginTop="55dp"
                     android:paddingStart="40dp"
-                    android:paddingEnd="40dp">
+                    android:paddingEnd="40dp"
+                    android:weightSum="6">
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:padding="1dp">
-                    <LinearLayout
-                        android:layout_width="90dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:padding="1dp">
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/spot9"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_centerHorizontal="true"
-                            android:layout_gravity="center"
-                            app:cardBackgroundColor="#1FBDAF">
-                            <TextView
-                                android:id="@+id/sp9"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+
+                        <LinearLayout
+                            android:layout_width="90dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="1dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/spot9"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerHorizontal="true"
                                 android:layout_gravity="center"
-                                android:text="9"
-                                android:textColor="@color/whiteTextColor"
-                                android:textAlignment="center"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-                        </androidx.cardview.widget.CardView>
-                    </LinearLayout>
+                                app:cardBackgroundColor="#1FBDAF">
+
+                                <TextView
+                                    android:id="@+id/sp9"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center"
+                                    android:text="9"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/whiteTextColor"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="110dp"
                         android:layout_weight="1"
 
-                        android:padding="1dp" >
+                        android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot12"
                             android:layout_width="match_parent"
@@ -208,14 +402,15 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             app:cardBackgroundColor="#1FBDAF">
+
                             <TextView
                                 android:id="@+id/sp12"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:text="12"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
@@ -227,18 +422,20 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="105dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:weightSum="6"
-                    android:layout_marginTop="105dp"
                     android:paddingStart="40dp"
-                    android:paddingEnd="40dp">
+                    android:paddingEnd="40dp"
+                    android:weightSum="6">
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot8"
                             android:layout_width="match_parent"
@@ -246,25 +443,28 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             app:cardBackgroundColor="#1FBDAF">
+
                             <TextView
                                 android:id="@+id/sp8"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:text="8"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="110dp"
                         android:layout_weight="1"
 
-                        android:padding="1dp" >
+                        android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot13"
                             android:layout_width="match_parent"
@@ -272,14 +472,15 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             app:cardBackgroundColor="#1FBDAF">
+
                             <TextView
                                 android:id="@+id/sp13"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:text="13"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
@@ -290,18 +491,20 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="155dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:weightSum="6"
                     android:paddingStart="40dp"
-                    android:layout_marginTop="155dp"
-                    android:paddingEnd="40dp">
+                    android:paddingEnd="40dp"
+                    android:weightSum="6">
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot7"
                             android:layout_width="match_parent"
@@ -309,25 +512,28 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             app:cardBackgroundColor="#1FBDAF">
+
                             <TextView
                                 android:id="@+id/sp7"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:text="7"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="110dp"
                         android:layout_weight="1"
 
-                        android:padding="1dp" >
+                        android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot14"
                             android:layout_width="match_parent"
@@ -335,14 +541,15 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             app:cardBackgroundColor="#1FBDAF">
+
                             <TextView
                                 android:id="@+id/sp14"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:text="14"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
@@ -353,18 +560,20 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="205dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:weightSum="6"
                     android:paddingStart="40dp"
-                    android:layout_marginTop="205dp"
-                    android:paddingEnd="40dp">
+                    android:paddingEnd="40dp"
+                    android:weightSum="6">
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot6"
                             android:layout_width="match_parent"
@@ -379,19 +588,21 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="6"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="110dp"
                         android:layout_weight="1"
 
-                        android:padding="1dp" >
+                        android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot15"
                             android:layout_width="match_parent"
@@ -406,8 +617,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="15"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
@@ -418,18 +629,20 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="255dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:weightSum="6"
                     android:paddingStart="40dp"
-                    android:layout_marginTop="255dp"
-                    android:paddingEnd="40dp">
+                    android:paddingEnd="40dp"
+                    android:weightSum="6">
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot5"
                             android:layout_width="match_parent"
@@ -437,24 +650,27 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             app:cardBackgroundColor="#1FBDAF">
+
                             <TextView
                                 android:id="@+id/sp5"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:text="5"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="110dp"
                         android:layout_weight="1"
-                        android:padding="1dp" >
+                        android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot16"
                             android:layout_width="match_parent"
@@ -463,14 +679,15 @@
                             android:layout_gravity="center"
 
                             app:cardBackgroundColor="#1FBDAF">
+
                             <TextView
                                 android:id="@+id/sp16"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:text="16"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
@@ -481,18 +698,20 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="305dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:weightSum="6"
                     android:paddingStart="40dp"
-                    android:layout_marginTop="305dp"
-                    android:paddingEnd="40dp">
+                    android:paddingEnd="40dp"
+                    android:weightSum="6">
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot4"
                             android:layout_width="match_parent"
@@ -500,24 +719,27 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             app:cardBackgroundColor="#1FBDAF">
+
                             <TextView
                                 android:id="@+id/sp4"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:text="4"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="110dp"
                         android:layout_weight="1"
-                        android:padding="1dp" >
+                        android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot17"
                             android:layout_width="match_parent"
@@ -533,8 +755,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="17"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
@@ -545,18 +767,20 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="355dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:weightSum="6"
                     android:paddingStart="40dp"
-                    android:layout_marginTop="355dp"
-                    android:paddingEnd="40dp">
+                    android:paddingEnd="40dp"
+                    android:weightSum="6">
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot3"
                             android:layout_width="match_parent"
@@ -564,25 +788,28 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             app:cardBackgroundColor="#1FBDAF">
+
                             <TextView
                                 android:id="@+id/sp3"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:text="3"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="110dp"
                         android:layout_weight="1"
 
-                        android:padding="1dp" >
+                        android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot18"
                             android:layout_width="match_parent"
@@ -590,14 +817,15 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             app:cardBackgroundColor="#1FBDAF">
+
                             <TextView
                                 android:id="@+id/sp18"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:text="18"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
@@ -608,18 +836,20 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="405dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:layout_marginTop="405dp"
-                    android:weightSum="6"
                     android:paddingStart="40dp"
-                    android:paddingEnd="40dp">
+                    android:paddingEnd="40dp"
+                    android:weightSum="6">
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot2"
                             android:layout_width="match_parent"
@@ -635,18 +865,20 @@
                                 android:layout_gravity="center"
                                 android:text="2"
                                 android:textAlignment="center"
-                                android:textSize="20dp"
                                 android:textColor="@color/whiteTextColor"
+                                android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="110dp"
                         android:layout_weight="1"
 
-                        android:padding="1dp" >
+                        android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot19"
                             android:layout_width="match_parent"
@@ -654,14 +886,15 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             app:cardBackgroundColor="#1FBDAF">
+
                             <TextView
                                 android:id="@+id/sp19"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:text="19"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
@@ -672,19 +905,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:weightSum="6"
-                    android:paddingStart="40dp"
                     android:layout_marginTop="455dp"
                     android:layout_marginBottom="10dp"
-                    android:paddingEnd="40dp">
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="40dp"
+                    android:paddingEnd="40dp"
+                    android:weightSum="6">
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot1"
                             android:layout_width="match_parent"
@@ -699,18 +934,20 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="1"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="90dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="110dp"
                         android:layout_weight="1"
-                        android:padding="1dp" >
+                        android:padding="1dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/spot20"
                             android:layout_width="match_parent"
@@ -718,14 +955,15 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             app:cardBackgroundColor="#1FBDAF">
+
                             <TextView
                                 android:id="@+id/sp20"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:text="20"
-                                android:textColor="@color/whiteTextColor"
                                 android:textAlignment="center"
+                                android:textColor="@color/whiteTextColor"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
@@ -733,25 +971,121 @@
                 </LinearLayout>
 
 
-
             </androidx.cardview.widget.CardView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
                 android:orientation="vertical">
-                <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
-                    android:id="@+id/bookSpot"
-                    style="@style/loginButton"
-                    android:layout_gravity="center_horizontal"
-                    android:backgroundTint="@color/orange"
-                    android:text="Book"
-                    app:initialCornerAngle="27dp"
-                    app:spinning_bar_color="#FFF"
-                    app:spinning_bar_padding="6dp"
-                    app:spinning_bar_width="4dp" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/calibri"
+                    android:text="Select Date:"
+                    android:textColor="#1FBDAF"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/datePickerButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/register_bk_color"
+                    android:fontFamily="@font/calibri"
+                    android:onClick="openDatePicker"
+                    android:text="MAY 07 2022"
+                    android:textColor="@color/whiteTextColor"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/calibri"
+                    android:text="Select Time:"
+                    android:textColor="#1FBDAF"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/timeButton1"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/register_bk_color"
+                        android:fontFamily="@font/calibri"
+                        android:onClick="popTimePicker1"
+                        android:text="Select Time"
+                        android:textColor="@color/whiteTextColor"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/calibri"
+                        android:text="To"
+                        android:textColor="@color/register_bk_color"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/timeButton2"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/register_bk_color"
+                        android:fontFamily="@font/calibri"
+                        android:onClick="popTimePicker2"
+                        android:text="Select Time"
+                        android:textColor="@color/whiteTextColor"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+                    <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                        android:id="@+id/bookSpot"
+                        style="@style/loginButton"
+                        android:layout_gravity="center_horizontal"
+                        android:backgroundTint="@color/register_bk_color"
+                        android:text="Book"
+                        app:initialCornerAngle="27dp"
+                        app:spinning_bar_color="#FFF"
+                        app:spinning_bar_padding="6dp"
+                        app:spinning_bar_width="4dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

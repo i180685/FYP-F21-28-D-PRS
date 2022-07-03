@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "656155363458",
-    "project_id": "f21-28-d-prs",
-    "storage_bucket": "f21-28-d-prs.appspot.com"
+    "project_number": "491902969494",
+    "project_id": "fyp-prs",
+    "storage_bucket": "fyp-prs.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:656155363458:android:12089fd977dcc7cda7cc9b",
+        "mobilesdk_app_id": "1:491902969494:android:18bdf2897755c5c4a9c4b7",
         "android_client_info": {
           "package_name": "android1_app.android2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "656155363458-as42d5a1nm7il9jduj055bmekphevqdl.apps.googleusercontent.com",
+          "client_id": "491902969494-plrrksvfe4pp42hmcg1mjk4mj8pnpmc6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBxTAzLkCQcmK7MXoG19-GBS7toagc2Ivk"
+          "current_key": "AIzaSyClrfSiq36-8Yf6gJGqD3jvSAL-qQU9i9Q"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "656155363458-as42d5a1nm7il9jduj055bmekphevqdl.apps.googleusercontent.com",
+              "client_id": "491902969494-plrrksvfe4pp42hmcg1mjk4mj8pnpmc6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
